@@ -8,6 +8,12 @@ Bundle-Vendor: SENCHA
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jface.text,
- org.eclipse.ui.editors
+ org.eclipse.ui.editors,
+ org.eclipse.swtbot.eclipse.finder,
+ org.eclipse.swtbot.swt.finder,
+ org.hamcrest.library,
+ org.eclipse.swt,
+ org.eclipse.ui.workbench,
+ org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

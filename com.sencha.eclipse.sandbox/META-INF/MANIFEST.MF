@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Sandbox
+Bundle-SymbolicName: com.sencha.eclipse.sandbox;singleton:=true
+Bundle-Version: 0.0.0.qualifier
+Bundle-Activator: com.sencha.eclipse.sandbox.Activator
+Bundle-Vendor: SENCHA
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

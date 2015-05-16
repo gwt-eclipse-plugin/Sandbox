@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.jf
+ ace.text,org.eclipse.ui.editors
+Bundle-Vendor: SENCHA
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 0.0.0.201505160522
+Bundle-Name: Sandbox
+Bundle-Activator: com.sencha.eclipse.sandbox.Activator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.sencha.eclipse.sandbox;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

@@ -18,18 +18,21 @@
     <tycho-extras.version>0.26.0</tycho-extras.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <!-- These constants are currently set up to build against Eclipse mars. -->
+    <!-- These constants are currently set up to build against Eclipse Mars. -->
     <eclipse.target>mars</eclipse.target>
 
     <!-- Repositories that Tycho will use to resolve compilation dependencies. -->
     <eclipse-repo.url>http://download.eclipse.org/releases/${eclipse.target}</eclipse-repo.url>
     <swtbot-repo.url>http://download.eclipse.org/technology/swtbot/releases/latest/</swtbot-repo.url>
-    <comparator.repo>http://storage.googleapis.com/gwt-eclipse-plugin/release</comparator.repo>
 
     <!-- OS-specific JVM flags, empty for the default case but redefined below -->
     <os-jvm-flags />
+
+    <!-- Don't kill the test early -->
+    <surefire.timeout>120000</surefire.timeout>
   </properties>
 
+  
   <repositories>
     <repository>
       <id>eclipse</id>
@@ -155,6 +158,15 @@
           </configuration>
         </plugin>
 
+        <!-- <plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>tycho-packaging-plugin</artifactId> <version>${tycho.version}</version> 
+          <dependencies> <dependency> <groupId>org.eclipse.tycho.extras</groupId> <artifactId>tycho-buildtimestamp-jgit</artifactId> 
+          <version>${tycho-extras.version}</version> </dependency> <dependency> <groupId>org.eclipse.tycho.extras</groupId> <artifactId>tycho-sourceref-jgit</artifactId> 
+          <version>${tycho-extras.version}</version> </dependency> </dependencies> <configuration> <strictBinIncludes>false</strictBinIncludes> 
+          <format>'v'yyyyMMdd-HHmm</format> <timestampProvider>jgit</timestampProvider> <jgit.ignore> pom.xml </jgit.ignore> <jgit.dirtyWorkingTree>${jgit.dirtyWorkingTree}</jgit.dirtyWorkingTree> 
+          <sourceReferences> <generate>true</generate> </sourceReferences> <archive> <addMavenDescriptor>false</addMavenDescriptor> 
+          </archive> <additionalFileSets> <fileSet> <directory>${project.build.directory}</directory> <includes> <include>.api_description</include> 
+          </includes> </fileSet> </additionalFileSets> </configuration> </plugin> -->
+
         <!-- https://eclipse.org/tycho/sitedocs/tycho-surefire/tycho-surefire-plugin/test-mojo.html -->
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
@@ -167,7 +179,6 @@
             <argLine>-Dorg.eclipse.swtbot.search.timeout=120000 -Xms128M -Xmx2G ${os-jvm-flags}</argLine>
           </configuration>
         </plugin>
-
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-p2-director-plugin</artifactId>
@@ -219,6 +230,12 @@
               </pluginExecutions>
             </lifecycleMappingMetadata>
           </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.7</version>
         </plugin>
       </plugins>
     </pluginManagement>

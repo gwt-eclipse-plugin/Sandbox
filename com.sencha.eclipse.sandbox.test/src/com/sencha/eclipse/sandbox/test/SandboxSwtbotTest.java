@@ -3,8 +3,7 @@
  */
 package com.sencha.eclipse.sandbox.test;
 
-import com.google.gdt.eclipse.swtbot.SwtBotProjectActions;
-import com.google.gdt.eclipse.swtbot.SwtBotTestingUtilities;
+import com.sencha.eclipse.sandbox.swtbot.SwtBotTestingUtilities;
 
 import junit.framework.TestCase;
 
@@ -28,8 +27,17 @@ public class SandboxSwtbotTest extends TestCase {
     SwtBotTestingUtilities.tearDown();
   }
 
-  public void testSwtBotCreateProject() {
-    SwtBotProjectActions.createJavaProject(bot, "SandboxySwty");
+  public void testRunSomethingInUi() {
+    // do something in ui
+    SwtBotTestingUtilities.performAndWaitForWindowChange(bot, new Runnable() {
+      @Override
+      public void run() {
+        bot.perspectiveById("org.eclipse.jdt.ui.JavaPerspective").activate();
+      }
+    });
+
+    // if I got this far, then the linux headless x frame buffer is working
+    assertTrue(true);
   }
 
 }

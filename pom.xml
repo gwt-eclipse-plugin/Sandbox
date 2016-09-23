@@ -155,14 +155,19 @@
           </configuration>
         </plugin>
 
+        <!-- https://eclipse.org/tycho/sitedocs/tycho-surefire/tycho-surefire-plugin/test-mojo.html -->
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-surefire-plugin</artifactId>
           <version>${tycho.version}</version>
           <configuration>
-            <argLine>-Dorg.eclipse.swtbot.search.timeout=90000 -Xms40m -Xmx1G ${os-jvm-flags}</argLine>
+            <!-- https://wiki.eclipse.org/Tycho/FAQ#How_to_use_SWTBot_or_some_UI_tool_for_testing.3F -->
+            <useUIHarness>true</useUIHarness> <!-- https://wiki.eclipse.org/SWTBot/Automate_test_execution -->
+            <useUIThread>false</useUIThread>
+            <argLine>-Dorg.eclipse.swtbot.search.timeout=120000 -Xms128M -Xmx2G ${os-jvm-flags}</argLine>
           </configuration>
         </plugin>
+
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-p2-director-plugin</artifactId>
